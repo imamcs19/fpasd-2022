@@ -1,0 +1,78 @@
+{% extends "extends/base.html" %}
+{% block title %}
+    <title>My Data Using Python</title>
+{% endblock title %}
+{{ self.title() }}
+    Home
+{{ self.title() }}
+<button onclick="window.location.href='/'" class="btn btn-outline btn-rounded btn-info">
+    <i class="ti-arrow-left m-l-5"></i>
+    <span>Back Home</span>
+</button> Project 1
+
+{{ self.title() }}
+    Project 1
+
+{% block content %}
+
+<h1><center>Weather Measurements</center></h1>
+
+{% for item in days %}
+    <h3>Day: {{item}}</h3>
+    <canvas id="chart_{{item}}" width="800" height="300"></canvas>
+{% endfor %}
+
+
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/Chart.bundle.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/utils.js') }}"></script>
+
+<script>
+
+{% for item in days %}
+    var chart_Data = {
+    labels : [{% for item in values[item][2] %}
+                   "{{item}}",
+               {% endfor %}],
+    datasets : [
+       {
+             label:'DEWP',
+             backgroundColor: window.chartColors.blue,
+             borderColor: window.chartColors.blue,
+             fill: false,
+             data : [{% for item in values[item][0] %}
+                       {{item}},
+                     {% endfor %}]
+       },
+       {
+             label:'TEMP',
+             backgroundColor: window.chartColors.red,
+             borderColor: window.chartColors.red,
+             fill: false,
+             data : [{% for item2 in values[item][1] %}
+                       {{item2}},
+                     {% endfor %}]
+       }]
+    }
+
+    var mychart = document.getElementById("chart_{{item}}").getContext("2d");
+    var LineChartDemo = new Chart(mychart, {
+        type: 'line',
+        data: chart_Data,
+        options: {
+          responsive: false,
+          scales: {
+            xAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: 'Hour'
+              }
+            }],
+          }
+        }
+    });
+
+{% endfor %}
+
+</script>
+
+{% endblock content %}

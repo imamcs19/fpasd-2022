@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Login - Register Form | Flask</title>
+<!-- Bootstrap Core CSS -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/bootstrap.min.css') }}" />
+<!-- animation CSS -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/animate.css') }}" />
+<!-- Custom CSS -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/style.css') }}" />
+<!-- color CSS -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/blue.css') }}"id="theme" />
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+<!-- Preloader -->
+<div class="preloader">
+  <div class="cssload-speeding-wheel"></div>
+</div>
+<section id="wrapper" class="login-register">
+  <div class="login-box login-sidebar">
+    <div class="white-box">
+      <form class="form-horizontal form-material" id="loginform">
+        <div class="form-group">
+          <div class="col-xs-12"><h1>My Data Application</h1></div>
+        <div class="form-group text-center m-t-20">
+          <div class="col-xs-12"style="padding: 15px;">
+            <button class="btn btn-outline-dark btn-lg btn-block text-uppercase waves-effect waves-light" type="hidden">
+            <a href="/login"> </a></button>
+          </div>
+        </div>
+        <div class="form-group text-center m-t-20">
+          <div class="col-xs-12">
+            <!-- <button class="btn btn-outline-dark btn-lg btn-block text-uppercase waves-effect waves-light"  type="submit"> -->
+            <!-- <a href="/login">Log In</a></button> -->            
+            <a class="btn btn-info btn-lg" role="button" href="{{ url_for('login') }}">Log In</a>
+          </div>
+        </div>
+        <div class="form-group text-center m-t-20">
+          <div class="col-xs-12">
+            <!--<button class="btn btn-outline-dark btn-lg btn-block text-uppercase waves-effect waves-light" type="submit"> -->
+            <!--<a href="/register">Register</a></button> -->
+            <button class="btn btn-outline-dark btn-lg btn-block text-uppercase waves-effect waves-light" >
+            <a role="button" href="{{ url_for('register') }}">Register</a></button>
+          </div>
+        </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<!-- jQuery -->
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/jquery.min.js') }}"></script>
+<!-- Bootstrap Core JavaScript -->
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/bootstrap.min.js') }}"></script>
+<!-- Menu Plugin JavaScript -->
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/sidebar-nav.min.js') }}"></script>
+
+<!--slimscroll JavaScript -->
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/slimscroll.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/waves.js') }}"></script>
+<!-- Custom Theme JavaScript -->
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/custom.min.js') }}"></script>
+<!--Style Switcher -->
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/jQuery.style.switcher.js') }}"></script>
+</body>
+</html>

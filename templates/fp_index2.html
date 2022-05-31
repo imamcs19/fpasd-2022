@@ -1,0 +1,76 @@
+{% extends "extends/base.html" %}
+{% block title %}
+    <title>Web Data App</title>
+{% endblock title %}
+{{ self.title() }}
+    Home
+{{ self.title() }}
+<button onclick="window.location.href='/'" class="btn btn-outline btn-rounded btn-info">
+    <i class="ti-arrow-left m-l-5"></i>
+    <span>Back Home</span>
+</button> Project 1
+
+{{ self.title() }}
+    Project 1
+
+{% block content %}
+
+	<div class="container">
+      <div class="row">
+        <div class="col-sm">
+            <form action="{{ url_for('fppredict')}}" method="POST">
+        		<p>Masukkan kalimat atau paragraf</p>
+        		<!-- <input type="text" name="comment"/> -->
+        		<textarea class="form-control" name="message" rows="4">{{ request.form['message'] }}</textarea>
+
+        		<br/>
+
+        		<input type="submit" class="btn-info" value="ParseTree_n_GetTypo">
+
+	        </form>
+        </div>
+        <!-- <br/>
+        <br/>
+        <div class="col-sm">
+            {% if prediction is defined %}
+             <p style="color:blue;font-size:20;text-align: left;"><b>Hasil Prediksi (Spam/Not a Spam):</b></p>
+        	 <div class="results">
+
+            	{% if prediction == 1%}
+            	<h2 style="color:red;">Spam</h2>
+            	{% elif prediction == 0%}
+            	<h2 style="color:blue;">Not a Spam (It is a Ham)</h2>
+            	{% endif %}
+
+        	</div>
+        	{% endif %}
+        </div> -->
+        <br/>
+        <br/>
+        <div class="col-sm">
+            {% if tree is defined %}
+
+             <p style="color:blue;font-size:20;text-align: left;"><b>Hasil ParseTree:</b></p>
+        	 <div class="results">
+                {% autoescape false %}
+            	<pre>{{ tree }}</pre>
+                {% endautoescape %}
+
+        	</div>
+
+        	{% endif %}
+        </div>
+        <br/>
+        <br/>
+        <div class="col-sm">
+            {% if typo is defined %}
+             <p style="color:blue;font-size:20;text-align: left;"><b>Hasil GetTypo:</b></p>
+        	 <div class="results">
+            	<h2 style="color:red;">{{ typo }}</h2>
+        	</div>
+        	{% endif %}
+        </div>
+      </div>
+    </div>
+
+{% endblock content %}
